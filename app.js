@@ -7,6 +7,11 @@ app.config(function($routeProvider){
            controller: "AuthCtrl",
            controllerAs: "auth"
        })
+       .when("/events", {
+           templateUrl: "views/events.html",
+           controller: "EventCtrl",
+           controllerAs: "event"
+       })
        .otherwise({
            templateUrl: "views/home.html",
            controller: "AuthCtrl",
@@ -41,6 +46,15 @@ app.factory("users",function(){
         return false;
     };
 
+    users.auth = function (email,password){
+        for (var i = 0; i < users.list.length; i++) {
+            if(users.list[i].email === email && users.list[i].password === password){
+                return true;
+            }
+        }
+        return false;
+    };
+
     return users;
 });
 
@@ -71,6 +85,10 @@ app.controller("AuthCtrl", function(users, $rootScope) {
     };
 
     self.login = function() {
-
+        if(users.auth(self.email,self.password)){
+            self.message = "Pass"
+        } else {
+            self.message = "Fail"
+        }
     };
 });

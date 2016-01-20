@@ -14,5 +14,6 @@
     </div>
     <button ng-click="auth.createUser()" type="button" class="btn btn-default">Sign Up</button>
     <button ng-click="auth.login()" type="button" class="btn btn-default">Sign In</button>
+    <P>{{auth.message}}</P>
     <p ng-repeat="user in auth.users">{{ user.email }}: {{ user.password }}</p>
 </form>
