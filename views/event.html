@@ -1,0 +1,34 @@
+<form class="form-horizontal" role="form" autocomplete="on">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input require type="text" class="form-control" id="name" placeholder="Enter short, clear name">
+
+        <label for="host">Host:</label>
+        <input type="text" class="form-control" id="host" placeholder="Enter event host">
+
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" onFocus="geolocate()" placeholder="Include a place or address">
+    </div>
+
+    <div class="form-group">
+        <label for="date" class="col-md-1">Date/Time:</label>
+        <div class="col-md-2 form-group">
+            <input type="date" class="form-control" id="date">
+        </div>
+        <div class="col-md-2 form-group">
+            <input type="time" class=" form-control" id="time">
+        </div>
+    </div>
+
+
+    <div class=" form-group">
+        <button type="button" class="btn btn-primary btn-default">Create Event</button>
+        <button type="button" class="btn btn-danger btn-default">Cancel</button>
+    </div>
+
+
+
+</form>
+<script src="assets/location.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg4pMYnoCEOm_LNJarpz4Cm4qMyyEAJDA&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>

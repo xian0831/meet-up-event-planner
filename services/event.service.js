@@ -3,11 +3,9 @@ angular
     .factory("events",events);
 
 function events() {
-    var event = {};
+    var events = {};
 
-    event.list = [
-        {"name":"Event1"},
-        {"name": "event2"}];
+    events.list = [];
 
 
 }
