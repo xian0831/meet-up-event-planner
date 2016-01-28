@@ -7,5 +7,6 @@ function events() {
 
     events.list = [];
 
+    return events;
 
 }
