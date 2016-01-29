@@ -5,7 +5,7 @@ app.config(config);
 function config($routeProvider) {
     $routeProvider.when("/home",
         {
-            templateUrl: "views/home.html",
+            templateUrl: "views/signup.html",
             controller: "AuthCtrl",
             controllerAs: "auth"
         })
