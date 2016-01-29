@@ -3,9 +3,14 @@ var app = angular.module("meetUpApp", ["ngRoute"]);
 app.config(config);
 
 function config($routeProvider) {
-    $routeProvider.when("/home",
+    $routeProvider.when("/signup",
         {
             templateUrl: "views/signup.html",
+            controller: "AuthCtrl",
+            controllerAs: "auth"
+        })
+        .when("/login",{
+            templateUrl: "views/login.html",
             controller: "AuthCtrl",
             controllerAs: "auth"
         })
