@@ -2,10 +2,10 @@ angular
     .module("meetUpApp")
     .controller("AuthCtrl", AuthCtrl);
 
-AuthCtrl.$inject = ["users", "$rootScope", "$log"];
+AuthCtrl.$inject = ["users", "$rootScope", "$log", "$location"];
 
 /* @ngInject */
-function AuthCtrl(users, $rootScope, $log) {
+function AuthCtrl(users, $rootScope, $log, $location) {
     var self = this;
 
     self.users = users.list;
@@ -30,9 +30,9 @@ function AuthCtrl(users, $rootScope, $log) {
 
     self.login = function() {
         if(users.auth(self.email,self.password)){
-            self.message = "Pass"
+            $location.path("/list");
         } else {
-            self.message = "Fail"
+            self.message = "Your email or password were incorrect."
         }
     };
 }
