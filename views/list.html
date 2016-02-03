@@ -1,5 +1,8 @@
-<h2>My Events</h2>
-<a href="#/event"><button class="btn btn-primary btn-default">Add New Event</button></a>
-<div class="list-group" ng-repeat="event in list.events">
-    <a href="#" class="list-group-item">{{event.eventName}}<span class="glyphicon glyphicon-trash"></span></a>
+<div class="col-md-6 col-md-offset-3">
+    <h2>My Events</h2>
+    <a href="#/event"><button class="btn btn-primary btn-default">Add New Event</button></a>
+    <div>
+        <a ng-click="list.open($index)" ng-repeat="event in list.events" class="list-group-item">{{event.eventName}}</a>
+    </div>
 </div>
+

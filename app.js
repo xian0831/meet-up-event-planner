@@ -1,4 +1,4 @@
-var app = angular.module("meetUpApp", ["ngRoute"]);
+var app = angular.module("meetUpApp", ["ngRoute","ngStorage","ngAnimate","ui.bootstrap","ngAutocomplete"]);
 
 app.config(config);
 

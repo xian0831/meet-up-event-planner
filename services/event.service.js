@@ -1,29 +1,24 @@
 angular
     .module("meetUpApp")
-    .factory("events",events);
+    .factory("events",["$localStorage",events]);
 
-function events() {
+function events($localStorage) {
     var events = {};
 
-    events.list = [{
-        "eventName" : "Foo Event",
-        "eventHost" : "Foo Host",
-        "eventLocation": "Foo Location",
-        "eventStartDate": "2015-06-04",
-        "eventStartTime": "16:21",
-        "eventEndDate": "2015-06-05",
-        "eventEndTime": "16:21"
-    }];
+    $localStorage.events = $localStorage.events || [];
+    events.list =  $localStorage.events;
+
 
     events.add = function(event) {
         events.list.push({
+            "user" : $localStorage.currentUser.email,
             "eventName" : event.eventName,
             "eventHost" : event.eventHost,
+            "eventType" : event.eventType,
             "eventLocation": event.eventLocation,
             "eventStartDate": event.eventStartDate,
-            "eventStartTime": event.eventStartTime,
             "eventEndDate": event.eventEndDate,
-            "eventEndTime": event.eventEndTime
+            "eventGuestList": event.eventGuestList
         });
     };
 

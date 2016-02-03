@@ -2,10 +2,10 @@ angular
     .module("meetUpApp")
     .controller("AuthCtrl", AuthCtrl);
 
-AuthCtrl.$inject = ["users", "$rootScope", "$log", "$location"];
+AuthCtrl.$inject = ["users", "$localStorage", "$log", "$location"];
 
 /* @ngInject */
-function AuthCtrl(users, $rootScope, $log, $location) {
+function AuthCtrl(users, $localStorage, $log, $location) {
     var self = this;
 
     self.users = users.list;
@@ -16,23 +16,24 @@ function AuthCtrl(users, $rootScope, $log, $location) {
                 "email": self.email,
                 "password": self.password
             })){
-
-            $rootScope.currentUser = {
-                "name": self.name,
+            $localStorage.currentUser = {
                 "email": self.email,
-                "password": self.password,
-                "isLogin": true
-            };
+                "isLogin": true};
 
-            $log.info($rootScope.currentUser);
+            $location.path("/list");
+        } else {
+            self.message = "The email address is already being used.";
         }
     };
 
     self.login = function() {
         if(users.auth(self.email,self.password)){
+            $localStorage.currentUser = {
+                "email": self.email,
+                "isLogin": true};
             $location.path("/list");
         } else {
-            self.message = "Your email or password were incorrect."
+            self.message = "Your email or password were incorrect.";
         }
     };
 }

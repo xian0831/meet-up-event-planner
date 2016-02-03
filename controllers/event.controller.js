@@ -8,6 +8,17 @@ EventCtrl.$inject = ["events","$log", "$location"];
 function EventCtrl(events, $log, $location) {
     var self = this;
 
+    self.compareDate = function() {
+        var sDate = new Date(self.eventStartDate);
+        var eDate = new Date(self.eventEndDate);
+
+        if(sDate>eDate){
+            self.message = "End Date / Time cannot be earlier than Start Date / Time.";
+        } else {
+            self.message = "";
+        }
+    };
+
     self.eventAvailableType = [
         "General",
         "Birthday",
@@ -21,20 +32,20 @@ function EventCtrl(events, $log, $location) {
 
     self.eventGuestList = [];
     self.createEvent = function() {
+
         events.add({
             "eventName" : self.eventName,
             "eventHost" : self.eventHost,
             "eventType" : self.eventType,
             "eventLocation": self.eventLocation,
             "eventStartDate": self.eventStartDate,
-            "eventStartTime": self.eventStartTime,
             "eventEndDate": self.eventEndDate,
-            "eventEndTime": self.eventEndTime,
             "eventGuestList": self.eventGuestList
         });
 
         $location.path("/list");
-    }
+
+    };
 
     self.addGuest = function() {
 
@@ -44,10 +55,5 @@ function EventCtrl(events, $log, $location) {
         }
 
     }
-
-
-
-
-
 }
 

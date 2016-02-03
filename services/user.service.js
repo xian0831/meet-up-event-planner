@@ -1,20 +1,24 @@
 angular
     .module("meetUpApp")
-    .factory("users",users);
+    .factory("users",["$localStorage",users]);
 
-function users() {
+function users($localStorage) {
     var users =  {};
 
-    users.list = [];
+    $localStorage.list = $localStorage.list || [];
+    users.list =  $localStorage.list;
 
     users.add = function(user) {
-
         if(users.exist(user.email)){
             return false;
         } else {
-            users.list.push({"name": user.name,
+            users.list.push({
+                "name": user.name,
                 "email": user.email,
                 "password": user.password});
+            $localStorage.currentUser = {
+                "email": self.email,
+                "isLogin": true};
             return true;
         }
     };
