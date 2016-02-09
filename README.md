@@ -23,4 +23,5 @@ The objective of this project is to build a easy to use sign-up form and practic
 2. Start creating events! Easy!
 
 ## Technology Used
-HTML5, CSS3, Javascript, Sass, Gulp, Bootstrap, AngularJS
+HTML5, CSS3, Javascript, Sass, Gulp, Bootstrap, AngularJS, [ngStorage](https://github.com/gsklee/ngStorage)
+
