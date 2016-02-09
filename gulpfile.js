@@ -12,17 +12,17 @@ var jsOrder = [
     "./app.js",
     "services/**/*.service.js",
     "controllers/**/*.controller.js",
-    "asset/*.js"
+    "assets/**/location.js"
 ];
 
-gulp.task("default", ["copy-html","styles"], function() {
+gulp.task("default", ["copy-html","styles","scripts"], function() {
     gulp.watch("sass/**/*.scss", ["styles"]);
     gulp.watch("./*")
         .on("change",browserSync.reload);
-    gulp.watch("./*/*")
+    gulp.watch("./**/*")
         .on("change",browserSync.reload);
     browserSync.init({
-        server: "./",
+        server: "./dist",
         port: 8080
     });
 });
@@ -44,6 +44,8 @@ gulp.task("styles", function() {
 gulp.task("copy-html", function() {
     gulp.src("./index.html")
         .pipe(gulp.dest("./dist"));
+    gulp.src("views/*.html")
+        .pipe(gulp.dest("./dist/views"));
 });
 
 gulp.task('scripts', function() {
