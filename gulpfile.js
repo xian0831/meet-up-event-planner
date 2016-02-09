@@ -10,12 +10,13 @@ var gulp = require("gulp"),
 
 var jsOrder = [
     "./app.js",
+    "assets/**/*.js",
     "services/**/*.service.js",
     "controllers/**/*.controller.js",
     "assets/**/location.js"
 ];
 
-gulp.task("default", ["copy-html","styles","scripts"], function() {
+gulp.task("default", ["copy-html","copy-img","styles","scripts"], function() {
     gulp.watch("sass/**/*.scss", ["styles"]);
     gulp.watch("./*")
         .on("change",browserSync.reload);
@@ -46,6 +47,11 @@ gulp.task("copy-html", function() {
         .pipe(gulp.dest("./dist"));
     gulp.src("views/*.html")
         .pipe(gulp.dest("./dist/views"));
+});
+
+gulp.task("copy-img", function() {
+    gulp.src("assets/img/*.png")
+        .pipe(gulp.dest("./dist/assets/img"));
 });
 
 gulp.task('scripts', function() {
