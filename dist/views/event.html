@@ -1,0 +1,42 @@
+<div class="col-md-6 col-md-offset-3">
+    <form ng-submit="event.createEvent()" class="form-horizontal" role="form" autocomplete="on" formAutofillFix>
+        <div class="form-group">
+            <label for="name">Event Name:</label>
+            <input required ng-model="event.eventName" type="text" class="form-control" id="name" placeholder="Enter short, clear name">
+
+            <label for="host">Host:</label>
+            <input required ng-model="event.eventHost" type="text" class="form-control" id="host" placeholder="Enter event host">
+
+            <label for="event-type">Type:</label>
+            <select required ng-model="event.eventType" class="form-control" id="event-type">
+                <option ng-repeat="type in event.eventAvailableType">{{type}}</option>
+            </select>
+
+            <label for="location">Location:</label>
+            <input required ng-autocomplete ng-model="event.eventLocation" type="text" class="form-control" id="location" onFocus="geolocate()" placeholder="Include a place or address">
+            <!--<p>{{event.eventLocation}}</p>-->
+            <label for="start-date">Start Date:</label>
+            <input required ng-model="event.eventStartDate" type="datetime-local" class="form-control" id="start-date">
+
+            <label for="end-date">End Date:</label>
+            <input required ng-model="event.eventEndDate" ng-blur="event.compareDate()" type="datetime-local" class="form-control" id="end-date">
+            <p class="bg-danger">{{event.message}}</p>
+
+            <label for="event-guest">Guest:</label>
+            <input ng-model="event.eventGuest" type="text" class="form-control" id="event-guest">
+            <a ng-click="event.addGuest()" ><button class="btn btn-primary btn-default">Add</button></a>
+        </div>
+
+        <div id="guest-list">
+            <ul class="list-group" >
+                <li ng-repeat="guest in event.eventGuestList" class="list-group-item">{{guest}}</li>
+            </ul>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary btn-default">Create Event</button>
+            <a href="#/list"><button type="button" class="btn btn-danger btn-default">Cancel</button></a>
+        </div>
+    </form>
+
+</div>
