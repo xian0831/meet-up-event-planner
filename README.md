@@ -27,3 +27,4 @@ HTML5, CSS3, Javascript, Sass, Gulp, Bootstrap, AngularJS, [ngStorage](https://g
 
 ##Resource
 [Autofocus in Angular](http://www.angulartutorial.net/2014/04/angular-js-auto-focus-for-input-box.html)
+[Password Validation](http://stackoverflow.com/questions/27938415/regex-for-password-atleast-1-letter-1-number-1-special-character-and-should)
