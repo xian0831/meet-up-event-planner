@@ -25,3 +25,5 @@ The objective of this project is to build a easy to use sign-up form and practic
 ## Technology Used
 HTML5, CSS3, Javascript, Sass, Gulp, Bootstrap, AngularJS, [ngStorage](https://github.com/gsklee/ngStorage)
 
+##Resource
+[Autofocus in Angular](http://www.angulartutorial.net/2014/04/angular-js-auto-focus-for-input-box.html)

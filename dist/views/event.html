@@ -2,28 +2,28 @@
     <form ng-submit="event.createEvent()" class="form-horizontal" role="form" autocomplete="on" formAutofillFix>
         <div class="form-group">
             <label for="name">Event Name:</label>
-            <input required ng-model="event.eventName" type="text" class="form-control" id="name" placeholder="Enter short, clear name">
+            <input required focus="true" ng-model="event.eventName" type="text" class="form-control" id="name" name="name" placeholder="Enter short, clear name">
 
             <label for="host">Host:</label>
-            <input required ng-model="event.eventHost" type="text" class="form-control" id="host" placeholder="Enter event host">
+            <input required ng-model="event.eventHost" type="text" class="form-control" id="host" name="host" placeholder="Enter event host">
 
             <label for="event-type">Type:</label>
-            <select required ng-model="event.eventType" class="form-control" id="event-type">
+            <select required ng-model="event.eventType" class="form-control" id="event-type" name="event-type">
                 <option ng-repeat="type in event.eventAvailableType">{{type}}</option>
             </select>
 
             <label for="location">Location:</label>
-            <input required ng-autocomplete ng-model="event.eventLocation" type="text" class="form-control" id="location" onFocus="geolocate()" placeholder="Include a place or address">
+            <input required ng-autocomplete ng-model="event.eventLocation" type="text" class="form-control" id="location" name="location" onFocus="geolocate()" placeholder="Include a place or address">
             <!--<p>{{event.eventLocation}}</p>-->
             <label for="start-date">Start Date:</label>
-            <input required ng-model="event.eventStartDate" type="datetime-local" class="form-control" id="start-date">
+            <input required ng-model="event.eventStartDate" type="datetime-local" class="form-control" id="start-date" name="star-date">
 
             <label for="end-date">End Date:</label>
-            <input required ng-model="event.eventEndDate" ng-blur="event.compareDate()" type="datetime-local" class="form-control" id="end-date">
+            <input required ng-model="event.eventEndDate" ng-blur="event.compareDate()" type="datetime-local" class="form-control" id="end-date" name="end-date">
             <p class="bg-danger">{{event.message}}</p>
 
             <label for="event-guest">Guest:</label>
-            <input ng-model="event.eventGuest" type="text" class="form-control" id="event-guest">
+            <input ng-model="event.eventGuest" type="text" class="form-control" id="event-guest" name="event-guest">
             <a ng-click="event.addGuest()" ><button class="btn btn-primary btn-default">Add</button></a>
         </div>
 
