@@ -16,7 +16,7 @@
             <input required ng-autocomplete ng-model="event.eventLocation" type="text" class="form-control" id="location" name="location" onFocus="geolocate()" placeholder="Include a place or address">
             <!--<p>{{event.eventLocation}}</p>-->
             <label for="start-date">Start Date:</label>
-            <input required ng-model="event.eventStartDate" type="datetime-local" class="form-control" id="start-date" name="star-date">
+            <input required ng-model="event.eventStartDate" type="datetime-local" class="form-control" id="start-date" name="start-date">
 
             <label for="end-date">End Date:</label>
             <input required ng-model="event.eventEndDate" ng-blur="event.compareDate()" type="datetime-local" class="form-control" id="end-date" name="end-date">
