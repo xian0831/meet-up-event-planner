@@ -148,7 +148,8 @@ function geolocate() {
                 users.list.push({
                     "name": user.name,
                     "email": user.email,
-                    "password": user.password});
+                    "password": user.password,
+                    "bio": user.bio});
                 $localStorage.currentUser = {
                     "email": self.email,
                     "isLogin": true};
@@ -189,13 +190,20 @@ function geolocate() {
     function AuthCtrl(users, $localStorage,$location) {
         var self = this;
 
+        var pattern = new RegExp(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{6,20}$/);
+
         self.users = users.list;
+        self.showPasswordHint = false;
 
         self.createUser = function() {
-            if(users.add({
+            if(!pattern.test(self.password)){
+                self.showPasswordHint = true;
+            }
+            else if(users.add({
                     "name": self.name,
                     "email": self.email,
-                    "password": self.password
+                    "password": self.password,
+                    "bio": self.bio
                 })){
                 $localStorage.currentUser = {
                     "email": self.email,
@@ -216,6 +224,15 @@ function geolocate() {
             } else {
                 self.message = "Your email or password were incorrect.";
             }
+        };
+
+
+        self.showPasswordCharHint = function() {
+            return (!pattern.test(self.password)  ? "bg-danger" : "bg-success");
+        };
+
+        self.showPasswordLengthHint = function() {
+            return (self.password === undefined || self.password.length < 6  || self.password.length > 20  ? "bg-danger" : "bg-success");
         };
     }
 })();

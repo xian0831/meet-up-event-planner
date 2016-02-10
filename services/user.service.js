@@ -16,7 +16,8 @@
                 users.list.push({
                     "name": user.name,
                     "email": user.email,
-                    "password": user.password});
+                    "password": user.password,
+                    "bio": user.bio});
                 $localStorage.currentUser = {
                     "email": self.email,
                     "isLogin": true};
